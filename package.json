@@ -1,0 +1,23 @@
+{
+  "name": "backup-db-on-google-drive",
+  "module": "src/index.ts",
+  "scripts": {
+    "build": "tsc",
+    "start": "node dist/index.js"
+  },
+  "devDependencies": {
+    "@types/bun": "latest",
+    "typescript": "^5.3.3"
+  },
+  "peerDependencies": {
+    "typescript": "^5.0.0"
+  },
+  "dependencies": {
+    "@googleapis/drive": "^8.6.0",
+    "cron": "^3.1.6",
+    "dayjs": "^1.11.11",
+    "envalid": "^8.0.0",
+    "filesize": "^10.1.0",
+    "google-auth-library": "^9.6.1"
+  }
+}
