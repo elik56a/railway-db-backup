@@ -11,7 +11,8 @@ import * as path from "path";
 
 const env = {
   DATABASE_URL: process.env.DATABASE_URL || "",
-  SERVICE_ACCOUNT: JSON.parse(process.env.SERVICE_ACCOUNT || "{}"),
+  GOOGLE_SERVICE_ACCOUNT_EMAIL: process.env.GOOGLE_SERVICE_ACCOUNT_EMAIL || "",
+  GOOGLE_SERVICE_ACCOUNT_PRIVATE_KEY: process.env.GOOGLE_SERVICE_ACCOUNT_PRIVATE_KEY || "",
   FOLDER_ID: process.env.FOLDER_ID || "",
   FILE_PREFIX: process.env.FILE_PREFIX || "db-backup-",
   DB_ENV: process.env.DB_ENV || "DEV",
@@ -23,8 +24,8 @@ if (process.env.RUN_BACKUP_CRON !== "true") {
 }
 
 const auth = new JWT({
-  email: env.SERVICE_ACCOUNT.client_email,
-  key: env.SERVICE_ACCOUNT.private_key,
+  email: env.GOOGLE_SERVICE_ACCOUNT_EMAIL,
+  key: env.GOOGLE_SERVICE_ACCOUNT_PRIVATE_KEY,
   scopes: ["https://www.googleapis.com/auth/drive"],
 });
 
