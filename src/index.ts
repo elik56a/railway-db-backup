@@ -36,8 +36,7 @@ const dumpToFile = async (filepath: string) => {
       (err, stdout, stderr) => {
         if (err) {
           reject(err.message);
-          return;
-        }
+          return;        }
 
         const isFileValid = execSync(`gzip -cd ${filepath} | head -c1`).length > 0;
         if (!isFileValid) return reject("Backup file is empty");
