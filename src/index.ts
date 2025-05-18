@@ -12,7 +12,7 @@ import * as path from "path";
 const env = {
   DATABASE_URL: process.env.DATABASE_URL || "",
   GOOGLE_SERVICE_ACCOUNT_EMAIL: process.env.GOOGLE_SERVICE_ACCOUNT_EMAIL || "",
-  GOOGLE_SERVICE_ACCOUNT_PRIVATE_KEY: process.env.GOOGLE_SERVICE_ACCOUNT_PRIVATE_KEY || "",
+  GOOGLE_SERVICE_ACCOUNT_PRIVATE_KEY: process.env.GOOGLE_SERVICE_ACCOUNT_PRIVATE_KEY?.replace(/\\n/g, "\n") || "",
   FOLDER_ID: process.env.FOLDER_ID || "",
   FILE_PREFIX: process.env.FILE_PREFIX || "db-backup-",
   DB_ENV: process.env.DB_ENV || "DEV",
