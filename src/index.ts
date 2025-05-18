@@ -63,7 +63,13 @@ const pushToDrive = async (filename: string, filepath: string) => {
 
 (async () => {
   try {
-    const filename = `${env.FILE_PREFIX}${new Date().toISOString().replace(/[:.]/g, "-")}.tar.gz`;
+    const now = new Date();
+const timestamp = now
+  .toISOString()
+  .replace(/\..+/, "")       // remove milliseconds and Z
+  .replace(/:/g, "-");       // replace colons with dashes
+
+const filename = `${env.FILE_PREFIX}${timestamp}.tar.gz`;
     const filepath = path.join(os.tmpdir(), filename);
 
     console.log(`🚀 Starting DB backup: ${filename}`);
