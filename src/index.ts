@@ -14,6 +14,7 @@ const env = {
   SERVICE_ACCOUNT: JSON.parse(process.env.SERVICE_ACCOUNT || "{}"),
   FOLDER_ID: process.env.FOLDER_ID || "",
   FILE_PREFIX: process.env.FILE_PREFIX || "db-backup-",
+  DB_ENV: process.env.DB_ENV || "DEV",
 };
 
 if (process.env.RUN_BACKUP_CRON !== "true") {
@@ -69,7 +70,7 @@ const timestamp = now
   .replace(/\..+/, "")       // remove milliseconds and Z
   .replace(/:/g, "-");       // replace colons with dashes
 
-const filename = `${env.FILE_PREFIX}${timestamp}.tar.gz`;
+const filename = `${env.DB_ENV}-${env.FILE_PREFIX}${timestamp}.tar.gz`;
     const filepath = path.join(os.tmpdir(), filename);
 
     console.log(`🚀 Starting DB backup: ${filename}`);
